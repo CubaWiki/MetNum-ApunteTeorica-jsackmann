@@ -468,7 +468,7 @@ Dado el escalar $\lambda$, se define $E$ como:
 Suponiendo que $\lambda$ está en la fila $i$ y columna $j$, vale que
 \begin{itemize}
 	\item $E \x A$ multiplica la $j$-ésima fila de $A$ por $\lambda$ y se la suma a la $i$-ésima fila de $A$.
-	\item $E \x A$ multiplica la $j$-ésima columna de $A$ por $\lambda$ y se la suma a la $i$-ésima columna de $A$.
+	\item $A \x E$ multiplica la $j$-ésima columna de $A$ por $\lambda$ y se la suma a la $i$-ésima columna de $A$.
 \end{itemize}
 
 \underline{Ejemplo:}
@@ -536,7 +536,7 @@ Entonces el sistema $S$ resulta ser la igualdad $A\x x = b$. Si consideramos
 
 \begin{center}
 
-$A_j = \begin{bmatrix}a_{i,j}\\a_{2,j}\\ \vdots \\ a_{n,j}\end{bmatrix}$\end{center}
+$A_j = \begin{bmatrix}a_{1,j}\\a_{2,j}\\ \vdots \\ a_{n,j}\end{bmatrix}$\end{center}
 
 entonces $S$ resulta ser $A_1 \cdot x_1 + A_2 \cdot x_2 + \cdots + A_n \cdot x_n = b$, una combinación lineal de vectores ($A_1,\cdots,A_n$). Consecuentemente, para resolver $S$, hay que encontrar una combinación lineal de $A_1,\cdots,A_n$ para que me de $b$. Si $A_1,\cdots,A_n$ son \textbf{linealmente independientes}, entonces siempre puedo encontrar un $x$ tal que $A\x x = b$. Si son \textbf{linealmente dependientes}, entonces no necesariamente existirá dicho $x$.
 
@@ -634,7 +634,7 @@ Nuevamente es necesario considerar dos casos para resolver el sistema:
 		\end{cases}\right)$
 	\end{enumerate}
 
-	Este procedimiento se conoce como ``algoritmo de sustitución hacia arriba''. Su complejidad es:
+	Este procedimiento se conoce como ``algoritmo de sustitución hacia atrás'' (o \textit{backward substitution}). Su complejidad es:
 	\begin{align*}
 		&n \text{ divisiones } + \displaystyle \sum_{i=1}^{n-1}i \text{ productos } + \displaystyle \sum_{i=1}^{n-1}i \text{ restas }\\
 		&= n \text{ divisiones } + \dfrac{n\cdot (n-1)}{2} \text{ productos } + \dfrac{n\cdot (n-1)}{2} \text{ restas }\\
@@ -658,7 +658,7 @@ Nuevamente es necesario considerar dos casos para resolver el sistema:
 	\end{itemize}
 \end{itemize}
 
-\underline{Observación:} Si la matriz es tiangular inferior, el procedimiento es igual que el anterior, pero se lo llama ``algoritmo de sustitución hacia adelante''.
+\underline{Observación:} Si la matriz es tiangular inferior, el procedimiento es igual que el anterior, pero se lo llama ``algoritmo de sustitución hacia adelante'' (o \textit{fordward substitution}).
 
 \subsubsection{Caso General}
 Se analiza el caso general para cualquier sistma de la forma $A\cdot x = b$.
@@ -680,7 +680,7 @@ Sea $A$ la matriz del sistema. Supongo $a_{1,1}\neq0$. Consecuentemente, el prim
 		0 & a_{2,2}^{(1)} & \cdots & a_{2,n}^{(1)} & \vrule & b_2^{(1)}\\[6pt]
 		\vdots & \vdots & \ddots & \vdots & \vrule & \vdots\\[6pt]
 		0 & a_{n,2}^{(1)} & \cdots & a_{n,n}^{(1)} & \vrule & b_n^{(1)}
-	\end{bmatrix}}_{A^{(-1)} }
+	\end{bmatrix}}_{A^{(1)} }
 	$
 \end{center}
 
@@ -692,7 +692,7 @@ Supongamos ahora que algún $a^{(k-1)}_{k,k} = 0$. En este caso, el procedimient
 \begin{itemize}
 	\item $\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (en la columna k, abajo de la diagonal existe un elemento distinto de 0). En este caso, intercambio la fila $k$ por la fila $i$ y sigo con el procedimiento. Puedo realizar este intercambio por que es un producto por matriz elemental.
 
-	\item $\not\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (todos los elementos de la columna $k$, desde la digonal hacia abajo son 0). Necesitaba un elemento distinto de cero para que me ayude a poner ceros e nla columna $j$. Como ya los tengo, sigo al paso siguiente (pues mi objetivo en el paso $k$ era poner ceros debajo de la diagonal en la columna $k$). La particularidad de esto es que voy a tener tantos ceros en al diagonal como casos como este haya tenido. El sistema sigue siendo equivalente.
+	\item $\not\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (todos los elementos de la columna $k$, desde la digonal hacia abajo son 0). Necesitaba un elemento distinto de cero para que me ayude a poner ceros en la columna $j$. Como ya los tengo, sigo al paso siguiente (pues mi objetivo en el paso $k$ era poner ceros debajo de la diagonal en la columna $k$). La particularidad de esto es que voy a tener tantos ceros en al diagonal como casos como este haya tenido. El sistema sigue siendo equivalente.
 \end{itemize}
 
 
@@ -751,6 +751,8 @@ donde
 		\end{tikzpicture}.
 	\end{center}
 \end{itemize}
+
+Además, $L$ tiene unos en la diagonal.
 
 \subsection{Ventajas}
 Para resolver sistemas en el caso general se utiliza el algoritmo de eliminación gaussiana para llevar el sistema a uno equivalente cuya matriz asociada sea triangular superior:
@@ -960,7 +962,7 @@ En conclusión
 		\end{bmatrix}$
 \end{center}
 
-A nivel implementación, para ahorrar espacio se suelen almacenar las dos matrices en una sola. Se guardan los coeficientes de abajo de la fiagonal de la matriz $L$ triangular inferior en los valores de U.
+A nivel implementación, para ahorrar espacio se suelen almacenar las dos matrices en una sola. Se guardan los coeficientes de abajo de la diagonal de la matriz $L$ triangular inferior en los valores de U.
 
 % (????) ACA FALTA EL EJEMPLO
 
@@ -1043,7 +1045,7 @@ Volviendo al mundo del sistema de ecuaciones, yo tenía que resolver el sistema 
 	L\cdot U \cdot x &= \underbrace{P\cdot b}_{b'}\\
 \end{align*}
 
-En conclusión, toda matriz tiene factorización \textbf{PLU}, que tiene costo $O(n^3)$ para obtenerlo. Pero, una vez pagado ese costo, si me mnatienen la matriz $A$ y sólo me cambian el vector resultado $b$, puedo resolver el nuevo sistema en $O(n^2)$. El guardarme los datos no agrega costo adicional.
+En conclusión, toda matriz tiene factorización \textbf{PLU}, que tiene costo $O(n^3)$ para obtenerlo. Pero, una vez pagado ese costo, si me mantienen la matriz $A$ y sólo me cambian el vector resultado $b$, puedo resolver el nuevo sistema en $O(n^2)$. El guardarme los datos no agrega costo adicional.
 
 \subsection{Estrategias de pivoteo}
 Como la computadora trabaja con artimética finita, es posible que se pierda precisión en ciertas operaciones. Por la representación de los números reales que utiliza la máquina, los números chicos, al estar más juntos, están más homogéneamente distribuidos (la distribución es más densa cerca del cero). Es por esto que es preferible dividir por un número grande en módulo, así me da uno chico y tengo una ``mejor'' representación.
@@ -1339,7 +1341,7 @@ La única forma de que una matriz triangular superior sea igual a una matriz tri
 
 En conclusión si $A$ tiene factorización LU, entonces es de la pinta $A=L\cdot D \cdot L^t$, donde
 \begin{itemize}
-	\item $L$ es una matriz triangular superior.
+	\item $L$ es una matriz triangular inferior.
 	\item $D$ es una matriz diagonal.
 \end{itemize}
 
@@ -1651,7 +1653,8 @@ Por ejemplo la matriz $\begin{bmatrix}
 		\item $Q$ es matriz banda.
 	\end{itemize}
 
-	Luego, se reduce el requerimiento de memoria a $O((p+q-1)\cdot n)$
+	Luego, se reduce el requerimiento de memoria a $O((p+q+1)\cdot n)$ (La diagonal principal, más
+las $p$ diagonales por encima y las $q$ diagonales por debajo de ella, todas de tamaño menor o igual a $n$).
 \end{prop}
 \newpage
 
@@ -2459,7 +2462,7 @@ Definimos entonces $W=I-2 P$. Luego,
 
 \newpage
 
-\section{Definiciones y Proposiciones Complementarioas}
+\section{Definiciones y Proposiciones Complementarias}
 Para toda esta sección, consideramos $A$ una matriz de $\R^{n\x n}$
 
 \begin{defi}
@@ -2628,7 +2631,7 @@ end k\\
 \end{tabbing}
 
 
-Para hacer esto, voy a descomponer a reescribir a la matriz $A$ en la forma $A= D-L-U$, donde
+Para hacer esto, voy a descomponer a la matriz $A$ en la forma $A= D-L-U$, donde
 \begin{itemize}
 	\item $D$ es la diagonal de la matriz $A$.
 	\item $L$ es la mitad inferior de $A$, con todos sus valores cambiados de signo.
