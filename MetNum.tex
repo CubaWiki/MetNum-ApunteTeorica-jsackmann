@@ -349,6 +349,7 @@ $B$ se nota como $A^{-1}$
 
 
 \subsection{Matrices Elementales}
+
 \subsubsection{Matrices de permutación}
 Una matriz de permutación $P$ es una matriz que permite permutar filas o columnas de una matriz $A$ al realizar:
 \begin{itemize}
@@ -692,7 +693,7 @@ Supongamos ahora que algún $a^{(k-1)}_{k,k} = 0$. En este caso, el procedimient
 \begin{itemize}
 	\item $\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (en la columna k, abajo de la diagonal existe un elemento distinto de 0). En este caso, intercambio la fila $k$ por la fila $i$ y sigo con el procedimiento. Puedo realizar este intercambio por que es un producto por matriz elemental.
 
-	\item $\not\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (todos los elementos de la columna $k$, desde la digonal hacia abajo son 0). Necesitaba un elemento distinto de cero para que me ayude a poner ceros en la columna $j$. Como ya los tengo, sigo al paso siguiente (pues mi objetivo en el paso $k$ era poner ceros debajo de la diagonal en la columna $k$). La particularidad de esto es que voy a tener tantos ceros en al diagonal como casos como este haya tenido. El sistema sigue siendo equivalente.
+	\item $\not\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (todos los elementos de la columna $k$, desde la diagonal hacia abajo son 0). Necesitaba un elemento distinto de cero para que me ayude a poner ceros en la columna $j$. Como ya los tengo, sigo al paso siguiente (pues mi objetivo en el paso $k$ era poner ceros debajo de la diagonal en la columna $k$). La particularidad de esto es que voy a tener tantos ceros en al diagonal como casos como este haya tenido. El sistema sigue siendo equivalente.
 \end{itemize}
 
 
