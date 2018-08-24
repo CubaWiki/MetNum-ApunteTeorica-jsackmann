@@ -349,6 +349,7 @@ $B$ se nota como $A^{-1}$
 
 
 \subsection{Matrices Elementales}
+
 \subsubsection{Matrices de permutación}
 Una matriz de permutación $P$ es una matriz que permite permutar filas o columnas de una matriz $A$ al realizar:
 \begin{itemize}
@@ -381,17 +382,17 @@ Si multiplicamos a izquierda esta matriz con cualquier otra, el resultado será 
 \underline{Obs:} esta notación con índices permite almacenar una matriz de permutación $P\rn{n}{n}$ en sólamente $n$ elementos, en lugar de en los $n^2$ que normalmente tomaría.
 
 
-\subsubsection{(????)}
+\subsubsection{Elemental de tipo 1}
 
-Una matriz de (????) $E$ es una matriz que permite multiplicar toda una fila o columna de una matriz $A$ por un escalar dado, al realizar:
+Una matriz elemental de tipo 1, $E_1$, es una matriz que permite multiplicar toda una fila o columna de una matriz $A$ por un escalar dado, al realizar:
 \begin{itemize}
-	\item $E\cdot A$ multiplica una fila de $A$ por un escalar $\lambda$.
-	\item $A\cdot E$ multiplica una columna de $A$ por un escalar $\lambda$.
+	\item $E_1\cdot A$ multiplica una fila de $A$ por un escalar $\lambda$.
+	\item $A\cdot E_1$ multiplica una columna de $A$ por un escalar $\lambda$.
 \end{itemize}
 
-Dado el escalar $\lambda$, definimos la matriz $E$ de la forma:
+Dado el escalar $\lambda$, definimos la matriz $E_1$ de la forma:
 \begin{center}
-	$E=\begin{bmatrix}
+	$E_1 =\begin{bmatrix}
 		1 & \cdots & 0 & \cdots & 0 \\
 		\vdots  & \ddots &   &        & \vdots  \\
 		0 & \cdots & \lambda & \cdots & 0\\
@@ -401,7 +402,7 @@ Dado el escalar $\lambda$, definimos la matriz $E$ de la forma:
 \end{center}
 
 
-Si $\lambda$ está en la fila $s$ de la matriz $E$, entonces la fila $s$ de la matriz $B = E \cdot A$ es la fila $s$ de la matriz $A$ multiplicada por $\lambda$. Las restantes filas quedan iguales.
+Si $\lambda$ está en la fila $s$ de la matriz $E_1$, entonces la fila $s$ de la matriz $B = E_1 \cdot A$ es la fila $s$ de la matriz $A$ multiplicada por $\lambda$. Las restantes filas quedan iguales.
 
 Ejemplos en $4\x 4$:
 \begin{center}
@@ -449,12 +450,12 @@ Ejemplos en $4\x 4$:
 \end{center}
 
 
-\subsubsection{(????)}
-Una matriz de (????) $E$ es una matriz que permite sumar dos filas o columnas de una matriz $A$, multiplicando una de ellas por un escalar dado.
+\subsubsection{Matriz elemental de tipo 2}
+Una matriz elemental de tipo 2, $E_2$, es una matriz que permite sumar dos filas o columnas de una matriz $A$, multiplicando una de ellas por un escalar dado.
 
-Dado el escalar $\lambda$, se define $E$ como:
+Dado el escalar $\lambda$, se define $E_2$ como:
 \begin{center}
-	$E = \begin{bmatrix}
+	$E_2 = \begin{bmatrix}
 		1 & & & & \\
 		& \ddots & & & \\
 		& & 1 & & \\
@@ -467,8 +468,8 @@ Dado el escalar $\lambda$, se define $E$ como:
 
 Suponiendo que $\lambda$ está en la fila $i$ y columna $j$, vale que
 \begin{itemize}
-	\item $E \x A$ multiplica la $j$-ésima fila de $A$ por $\lambda$ y se la suma a la $i$-ésima fila de $A$.
-	\item $A \x E$ multiplica la $j$-ésima columna de $A$ por $\lambda$ y se la suma a la $i$-ésima columna de $A$.
+	\item $E_2 \x A$ multiplica la $j$-ésima fila de $A$ por $\lambda$ y se la suma a la $i$-ésima fila de $A$.
+	\item $A \x E_2$ multiplica la $j$-ésima columna de $A$ por $\lambda$ y se la suma a la $i$-ésima columna de $A$.
 \end{itemize}
 
 \underline{Ejemplo:}
@@ -692,7 +693,7 @@ Supongamos ahora que algún $a^{(k-1)}_{k,k} = 0$. En este caso, el procedimient
 \begin{itemize}
 	\item $\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (en la columna k, abajo de la diagonal existe un elemento distinto de 0). En este caso, intercambio la fila $k$ por la fila $i$ y sigo con el procedimiento. Puedo realizar este intercambio por que es un producto por matriz elemental.
 
-	\item $\not\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (todos los elementos de la columna $k$, desde la digonal hacia abajo son 0). Necesitaba un elemento distinto de cero para que me ayude a poner ceros en la columna $j$. Como ya los tengo, sigo al paso siguiente (pues mi objetivo en el paso $k$ era poner ceros debajo de la diagonal en la columna $k$). La particularidad de esto es que voy a tener tantos ceros en al diagonal como casos como este haya tenido. El sistema sigue siendo equivalente.
+	\item $\not\exists i \in [k+1,\cdots,n]\ /\ \ a^{k_1}_{i,j}\neq0$ (todos los elementos de la columna $k$, desde la diagonal hacia abajo son 0). Necesitaba un elemento distinto de cero para que me ayude a poner ceros en la columna $j$. Como ya los tengo, sigo al paso siguiente (pues mi objetivo en el paso $k$ era poner ceros debajo de la diagonal en la columna $k$). La particularidad de esto es que voy a tener tantos ceros en al diagonal como casos como este haya tenido. El sistema sigue siendo equivalente.
 \end{itemize}
 
 
